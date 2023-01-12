@@ -8,31 +8,16 @@ public class OutfitChanger : MonoBehaviour
     public SpriteRenderer bodyPart;
 
     [Header("Sprite to Cycle Through")]
-    public List<Sprite> options = new List<Sprite>();
+    public List<Sprite> outfits = new List<Sprite>();
 
-    private int currentOption = 0;
-    
-    public void NextOption()
-    {
-        currentOption++;
-        if(currentOption >= options.Count)
-        {
-            currentOption = 0;
-        }
-        bodyPart.sprite = options[currentOption];
-    }
-    public void PreviousOption()
-    {
-        currentOption--;
-        if(currentOption <= 0)
-        {
-            currentOption = options.Count - 1;
-        }
-        bodyPart.sprite = options[currentOption];
+    private int currentOutfit = 0;
+
+    private void Start() {
+        Rand();
     }
     public void Rand()
     {
-        currentOption = Random.Range(0, options.Count - 1);
-        bodyPart.sprite = options[currentOption];
+        currentOutfit = Random.Range(0, outfits.Count - 1);
+        bodyPart.sprite = outfits[currentOutfit];
     }
 }
